@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HEROKUNODE } from "./urls"
 
 @Injectable()
 export class QuizServiceClient {
     findAllQuizzes = () =>
-        fetch('http://localhost:3000/api/quizzes')
+        fetch(`${HEROKUNODE}/api/quizzes`)
             .then(response => response.json())
     findQuizById = (qid) =>
-        fetch(`http://localhost:3000/api/quizzes/${qid}`)
+        fetch(`${HEROKUNODE}/api/quizzes/${qid}`)
             .then(response => response.json())
 }
