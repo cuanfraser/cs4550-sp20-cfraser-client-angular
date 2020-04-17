@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CourseViewerComponent } from './course-viewer/course-viewer.component';
-import { HomeComponent } from './home/home.component';
-import { CourseTableComponent } from './course-table/course-table.component';
+import { CourseViewerComponent } from './components/course-viewer/course-viewer.component';
+import { HomeComponent } from './components/home/home.component';
+import { CourseTableComponent } from './components/course-table/course-table.component';
 
 
 const routes: Routes = [
