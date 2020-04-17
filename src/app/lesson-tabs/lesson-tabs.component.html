@@ -1,1 +1,9 @@
-<p>lesson-tabs works!</p>
+<h3>Lesson Tabs</h3>
+
+<ul class="list-group">
+    <li class="list-group-item" [class]="{'active': lesson._id === lessonId}" *ngFor="let lesson of lessons">
+        <a routerLink="/table/courses/{{courseId}}/modules/{{moduleId}}/lessons/{{lesson._id}}">
+            {{lesson.title}}
+        </a>
+    </li>
+</ul>

@@ -1,1 +1,16 @@
-<p>course-viewer works!</p>
+<div class="row">
+    <h1 class="col-11">Course Viewer for {{course.title}}</h1>
+    <a routerLink="/table/courses">
+        <i class="fa fa-2x fa-times pt-2 float-right col"></i>
+    </a>
+
+</div>
+
+<div class="row">
+    <div class="col-4">
+        <app-module-list></app-module-list>
+    </div>
+    <div class="col-8">
+        <app-lesson-tabs></app-lesson-tabs>
+    </div>
+</div>

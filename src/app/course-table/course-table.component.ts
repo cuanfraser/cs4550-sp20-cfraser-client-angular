@@ -9,13 +9,12 @@ import { CourseServiceClient } from '../services/CourseServiceClient';
 export class CourseTableComponent implements OnInit {
 
     title = 'Course Table Component'
-    newCourseTitle = ''
     courses = []
 
     constructor(private service: CourseServiceClient) { }
 
     ngOnInit(): void {
         this.service.findAllCourses()
-            .then()
+            .then(courses => this.courses = courses)
     }
 }
