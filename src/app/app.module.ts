@@ -12,6 +12,12 @@ import { LessonServiceClient } from './services/LessonServiceClient';
 import { ModuleListComponent } from './components/module-list/module-list.component';
 import { LessonTabsComponent } from './components/lesson-tabs/lesson-tabs.component';
 import { CourseTableComponent } from './components/course-table/course-table.component';
+import { QuizzesComponent } from './components/quizzes/quizzes.component';
+import { QuizServiceClient } from './services/quiz.service.client';
+import { QuestionServiceClient } from './services/question.service.client';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { TrueFalseQuestionComponent } from './components/true-false-question/true-false-question.component';
+import { MultipleChoiceQuestionComponent } from './components/multiple-choice-question/multiple-choice-question.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,11 @@ import { CourseTableComponent } from './components/course-table/course-table.com
     HomeComponent,
     ModuleListComponent,
     LessonTabsComponent,
-    CourseTableComponent
+    CourseTableComponent,
+    QuizzesComponent,
+    QuizComponent,
+    TrueFalseQuestionComponent,
+    MultipleChoiceQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +40,9 @@ import { CourseTableComponent } from './components/course-table/course-table.com
   providers: [
     CourseServiceClient,
     ModuleServiceClient,
-    LessonServiceClient
+    LessonServiceClient,
+    QuizServiceClient,
+    QuestionServiceClient
   ],
   bootstrap: [AppComponent]
 })

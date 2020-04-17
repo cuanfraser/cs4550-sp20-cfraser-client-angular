@@ -1,0 +1,48 @@
+<h4>
+    {{question.question}}
+    <i *ngIf="grading && (answer !== question.correct)" class="fa fa-times" aria-hidden="true"></i>
+    <i *ngIf="grading && (answer === question.correct)" class="fa fa-check" aria-hidden="true"></i>
+</h4>
+
+<form>
+    <div class="form-group">
+        <ul class="list-group">
+            <li [ngClass]="{
+                'list-group-item': true,
+                'list-group-item-success': grading && (question.correct === 'true'),
+                'list-group-item-danger': grading && (question.correct !== 'true') && (answer === 'true')
+            }">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="true" [(ngModel)]="answer"
+                        name="{{question._id}}" id="trueRadioBtn" />
+                    <label class="form-check-label" for="trueRadioBtn">True</label>
+                    <i *ngIf="grading && answer === 'true' && (question.correct !== 'true')" class="fa fa-times"
+                        aria-hidden="true"></i>
+                    <i *ngIf="grading && (question.correct === 'true')" class="fa fa-check"
+                        aria-hidden="true"></i>
+                </div>
+
+            </li>
+            <li [ngClass]="{
+                'list-group-item': true,
+                'list-group-item-success': grading && (question.correct === 'false'),
+                'list-group-item-danger': grading && (question.correct !== 'false') && (answer === 'false')
+            }">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="false" [(ngModel)]="answer"
+                        name="{{question._id}}" id="falseRadioBtn" />
+                    <label class="form-check-label" for="falseRadioBtn">False</label>
+                    <i *ngIf="grading && answer === 'false' && (question.correct !== 'false')" class="fa fa-times"
+                        aria-hidden="true"></i>
+                    <i *ngIf="grading && answer === 'false' && (question.correct === 'false')" class="fa fa-check"
+                        aria-hidden="true"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="form-group">
+        <button type="button" class="btn btn-success" (click)="grade()">Grade</button>
+    </div>
+
+</form>
