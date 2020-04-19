@@ -1,14 +1,21 @@
+<h1>Quiz</h1>
 <ul class="list-group">
     <li *ngFor="let question of questions" class="list-group-item">
         <div [ngSwitch]=question.type>
-            <app-multiple-choice-question [question]="question" [(answer)]="question.answer"
+            <app-multiple-choice-question [question]="question" [(answer)]="question.answer" [(submitted)]="submitted"
                 *ngSwitchCase="'MULTIPLE_CHOICE'">
             </app-multiple-choice-question>
-            <app-true-false-question [question]="question" [(answer)]="question.answer" *ngSwitchCase="'TRUE_FALSE'">
+            <app-true-false-question [question]="question" [(answer)]="question.answer" [(submitted)]="submitted" *ngSwitchCase="'TRUE_FALSE'">
             </app-true-false-question>
         </div>
     </li>
 </ul>
-<button (click)="submitQuiz()">
-    Submit Quiz
-</button>
+<div class="d-flex p-2">
+    <button (click)="submitQuiz()" type="button" class="btn btn-success">
+        Submit Quiz
+    </button>
+</div>
+
+<div class="alert alert-primary" role="alert" *ngIf="submitted">
+    Quiz Submitted!
+</div>

@@ -13,13 +13,15 @@ export class TrueFalseQuestionComponent implements OnInit {
     question = { _id: '', title: '', question: '', answer: '', correct: '' }
     @Input()
     answer = ''
+    @Input()
+    submitted = false
     @Output()
     answerChange = new EventEmitter<string>()
 
-    grading = false
+    saved = false
 
-    grade = () => {
-        this.grading = true;
+    save = () => {
+        this.saved = true
         this.answerChange.emit(this.answer);
     }
 

@@ -14,6 +14,6 @@ export class QuizAttemptServiceClient {
             .then(response => response.json())
 
     findQuizAttemptsForQuiz = (qid) =>
-        fetch(`${HEROKUNODE}/api/quizzes/:qid/attempts`)
+        fetch(`${HEROKUNODE}/api/quizzes/${qid}/attempts`)
             .then(response => response.json())
 }

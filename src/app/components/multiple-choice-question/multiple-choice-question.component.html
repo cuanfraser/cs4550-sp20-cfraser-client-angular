@@ -1,7 +1,7 @@
 <h4>
     {{question.question}}
-    <i *ngIf="grading && (answer !== question.correct)" class="fa fa-times" aria-hidden="true"></i>
-    <i *ngIf="grading && (answer === question.correct)" class="fa fa-check" aria-hidden="true"></i>
+    <i *ngIf="submitted && (answer !== question.correct)" class="fa fa-times" aria-hidden="true"></i>
+    <i *ngIf="submitted && (answer === question.correct)" class="fa fa-check" aria-hidden="true"></i>
 </h4>
 
 <form>
@@ -10,17 +10,18 @@
 
             <li [ngClass]="{
                 'list-group-item': true,
-                'list-group-item-success': grading && (question.correct === choice),
-                'list-group-item-danger': grading && (question.correct !== choice) && (answer === choice)}"
+                'list-group-item-primary': !submitted && saved && (answer === choice),
+                'list-group-item-success': submitted && (question.correct === choice),
+                'list-group-item-danger': submitted && (question.correct !== choice) && (answer === choice)}"
                 *ngFor="let choice of question.choices">
                 <div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" value={{choice}} [(ngModel)]="answer"
-                            name="{{question._id}}" id={{choice}} />
+                            [attr.disabled]="submitted ? '' : null" name="{{question._id}}" id={{choice}} />
                         <label class="form-check-label" for={{choice}}>{{choice}}</label>
-                        <i *ngIf="grading && answer === choice && (question.correct !== choice)" class="fa fa-times"
+                        <i *ngIf="submitted && answer === choice && (question.correct !== choice)" class="fa fa-times"
                             aria-hidden="true"></i>
-                        <i *ngIf="grading && (question.correct === choice)" class="fa fa-check"
+                        <i *ngIf="submitted && (question.correct === choice)" class="fa fa-check"
                             aria-hidden="true"></i>
                     </div>
                 </div>
@@ -29,7 +30,7 @@
     </div>
 
     <div class="form-group">
-        <button type="button" class="btn btn-success" (click)="grade()">Grade</button>
+        <button type="button" class="btn btn-success" (click)="save()">Save</button>
     </div>
 
 </form>

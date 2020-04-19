@@ -13,13 +13,15 @@ export class MultipleChoiceQuestionComponent implements OnInit {
     question = { _id: '', title: '', question: '', choices: [], correct: '', answer: '' }
     @Input()
     answer = ''
+    @Input()
+    submitted = false
     @Output()
     answerChange = new EventEmitter<string>()
+    
+    saved = false
 
-    grading = false
-
-    grade = () => {
-        this.grading = true;
+    save = () => {
+        this.saved = true;
         this.answerChange.emit(this.answer);
     }
 

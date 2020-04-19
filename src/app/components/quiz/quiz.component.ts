@@ -15,10 +15,12 @@ export class QuizComponent implements OnInit {
 
     quizId = ''
     questions = []
+    submitted = false;
 
     submitQuiz = () => {
         this.attemptService.createQuizAttempt(this.quizId, this.questions)
             .then(result => console.log(result))
+        this.submitted = true;
     }
 
 
