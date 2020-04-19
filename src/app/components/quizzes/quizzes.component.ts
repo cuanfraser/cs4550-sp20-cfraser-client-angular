@@ -18,7 +18,7 @@ export class QuizzesComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.courseId = params.courseId;
             this.service.findAllQuizzes()
-                .then(quizzes => this.quizzes = quizzes);
+                .then(quizzes => this.quizzes = quizzes.sort((n1, n2) => n1.title.localeCompare(n2.title)));
         });
     }
 
